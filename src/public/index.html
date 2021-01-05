@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TYPEORM</title>
+</head>
+	<script  src="/socket.io/socket.io.js"></script>
+	<script >
+		
+		var socket = io();
+		// socket.on("broadcast",function(data){
+			// console.log(data);
+			socket.emit("Start Game","start")
+			// document.write(data);
+		// })
+		socket.on("instruction",function(data){
+			console.log("from Server : "+data);
+
+			socket.emit("addition",2);
+		});
+
+		socket.on("add-question", (data)=>{
+			console.log(data);
+
+			socket.emit("add-anwser",4);
+		})
+
+		socket.on("report", (data)=>{
+			console.log(data)
+		})
+	</script>
+<body>
+<h1>THIS IS BACKED</h1>
+</body>
+</html>
