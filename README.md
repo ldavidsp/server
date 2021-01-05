@@ -46,6 +46,12 @@ To use project you need:
 2. Nodejs v10.*
 3. Mysql or Any Database of your Choice
  
+## Credits
+--
+**Base Project**
+
+https://github.com/ceeghee/nodejs-typeorm-rest-server
+ 
 ---
 
 
