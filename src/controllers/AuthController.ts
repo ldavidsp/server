@@ -21,26 +21,36 @@ class AuthController {
     try {
       user = await userRepository.findOneOrFail({ where: { username } });
     } catch (error) {
-      console.log(error)
-      res.status(401).send();
-    }
-
-    //Check if encrypted password match
-    if (!user.checkIfUnencryptedPasswordIsValid(password)) {
-      console.log("error")
-      res.status(401).send();
+      //console.log(error)
+      res.status(401).send({message: "INVALIDLOGIN"});
       return;
     }
 
-    //Sing JWT, valid for 1 hour
+    //Check if encrypted password match
+    if(user){
+      if (!user.checkIfUnencryptedPasswordIsValid(password)) {
+        console.log("error")
+        res.send();
+        return;
+      }
+    }
+
+
+    //Sing JWT, valid for 8 hour
     const token = jwt.sign(
       { userId: user.id, username: user.username },
       config.jwtSecret,
-      { expiresIn: "1h" }
+      { expiresIn: "8h" }
     );
 
+    let userToSend = {
+      userId: user.id,
+      userName: user.username,
+      token: token,
+    }
+
     //Send the jwt in the response
-    res.send(token);
+    res.send(userToSend);
   };
 
   static changePassword = async (req: Request, res: Response) => {
