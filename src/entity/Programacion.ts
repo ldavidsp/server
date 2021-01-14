@@ -10,9 +10,6 @@ export class Programacion {
     nombre: string;
 
     @Column()
-    mombres: number;
-
-    @Column()
     horas: number;
 
     @Column()
