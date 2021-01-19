@@ -8,7 +8,7 @@ export class Jaula{
     id: number;
 
     @Column()
-  	mombre: string;
+  	nombre: string;
 
     @Column()
     pesoPromedio: number; 

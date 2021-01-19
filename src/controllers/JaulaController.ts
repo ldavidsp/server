@@ -3,9 +3,23 @@ import { NextFunction, Request, Response } from "express";
 import { Jaula } from '../entity/Jaula';
 import { validate } from "class-validator";
 
+import { SocketServer } from '../server';
+
 export class JaulaController {
 
+	// private io: SocketIO.Server;
+	// private socket;
+
+	// constructor(socket, io : SocketIO.Server){
+	// 	this.socket = socket
+	// 	this.io = io;
+	// }
+
+	
 	public jaulaRepository = getRepository(Jaula);
+
+	
+
 
 	static all = async (req: Request, res: Response, next: NextFunction) => {
 		const jaulaRepository = getRepository(Jaula);
@@ -13,6 +27,7 @@ export class JaulaController {
 			const jaula = await jaulaRepository.find();
 			// jaula =  await  this.jaulaRepository.find({select: ["id","firstName"] }); // use incase you want to select specific values
 			res.send(jaula);
+
 		} catch (error) {
 			res.status(500).send();
 		}

@@ -4,6 +4,8 @@ import * as socketIo from 'socket.io';
 
 import { Message } from './model';
 import { GameController } from './controllers/GameController';
+import { Jaula } from './entity/Jaula';
+import { JaulaController } from './controllers/JaulaController';
 
 export class SocketServer {
     public static readonly PORT:number = 3000;
@@ -46,6 +48,9 @@ export class SocketServer {
         this.io.on('connect', (socket: any) => {
             this.socketID = socket.id
             let game = new GameController(socket, this.io);
+            //let jaula = new JaulaController(socket, this.socketID)
+            
+
             console.log('Connected client on socket id %s.', socket.id);
             socket.on("Start Game", (m: Message) => {
                 game.start();
