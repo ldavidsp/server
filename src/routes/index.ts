@@ -8,6 +8,7 @@ import linea from "./linea";
 import programacion from "./programacion";
 import jaula from "./jaula";
 import alimentacion from "./alimentacion";
+import dosificador from "./dosificador";
 
 const routes = Router();
 
@@ -19,5 +20,6 @@ routes.use("/linea", linea);
 routes.use("/programacion", programacion);
 routes.use("/jaula", jaula);
 routes.use("/alimentacion", alimentacion);
+routes.use("/dosificador", dosificador);
 
 export default routes;
