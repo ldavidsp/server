@@ -35,7 +35,7 @@ export class DosificadorController {
         let dosificador = new Dosificador();
         
         //asign each param 
-        dosificador.idLinea = idLinea;
+        dosificador.IDLINEA = idLinea;
 
         //Validade if the parameters are ok
         const errors = await validate(dosificador);

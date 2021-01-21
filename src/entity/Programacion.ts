@@ -4,19 +4,19 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 export class Programacion {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
 
     @Column()
-    nombre: string;
+    NOMBRE: string;
 
     @Column()
-    horas: number;
+    HORAS: number;
 
     @Column()
-    visitas: number;
+    VISITAS: number;
 
     @Column()
-    usuario: number;
+    USUARIO: number;
 
 
 }

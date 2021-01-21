@@ -4,13 +4,13 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 export class Sensor {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
 
     @Column()
-    alarma: number;
+    ALARMA: number;
 
     @Column()
-    nombre: string;
+    NOMBRE: string;
 
 
 }

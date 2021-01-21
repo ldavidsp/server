@@ -35,7 +35,7 @@ export class TolvaController {
         let tolva = new Tolva();
         
         //asign each param 
-        tolva.idLinea = idJaula;
+        tolva.IDLINEA = idJaula;
 
         //Validade if the parameters are ok
         const errors = await validate(tolva);

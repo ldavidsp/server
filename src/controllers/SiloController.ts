@@ -35,7 +35,7 @@ export class SiloController {
         let silo = new Silo();
         
         //asign each param 
-        silo.saldo = saldo;
+        silo.SALDO = saldo;
 
         //Validade if the parameters are ok
         const errors = await validate(silo);

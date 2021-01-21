@@ -4,22 +4,22 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 export class Selectora {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
 
     @Column()
-    salidas: number;
+    SALIDAS: number;
 
     @Column()
-    modelo: string;
+    MODELO: string;
     
     @Column()
-    direccionmodbus: number;
+    DIRECCIONMODBUS: number;
     
     @Column()
-    idLinea: number;
+    IDLINEA: number;
     
     @Column()
-    idAlarma: number;
+    IDALARMA: number;
 
 }
 
@@ -27,19 +27,19 @@ export class Selectora {
 export class Historicoselectora {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
 
     @Column()
-    observacion: string;
+    OBSERVACION: string;
 
     @Column()
-    fecha: Date;
+    FECHA: Date;
 
     @Column()
-    idSelectora: number;
+    IDSELECTORA: number;
 
     @Column()
-    usuario: number;
+    USUARIO: number;
 
 }
 
@@ -47,21 +47,21 @@ export class Historicoselectora {
 export class Controlselector {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
     
     @Column()
-    idSelector: number;    
+    IDSELECTOR: number;    
     
     @Column()
-    idLinea: number;
+    IDLINEA: number;
 
     @Column()
-    posicion_actual: number;
+    POSICION_ACTUAL: number;
 
     @Column()
-    posicion_deseada: number;
+    POSICION_DESEADA: number;
 
     @Column()
-    orden_mover: number;
+    ORDEN_MOVER: number;
 
 }

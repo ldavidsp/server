@@ -35,7 +35,7 @@ export class GuillotinaController {
         let guillotina = new Guillotina();
         
         //asign each param 
-        guillotina.idSilo = idSilo;
+        guillotina.IDSILO = idSilo;
 
         //Validade if the parameters are ok
         const errors = await validate(guillotina);

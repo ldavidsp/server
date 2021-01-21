@@ -35,7 +35,7 @@ export class EsclusaController {
         let esclusa = new Esclusa();
         
         //asign each param 
-        esclusa.idLinea = idLinea;
+        esclusa.IDLINEA = idLinea;
 
         //Validade if the parameters are ok
         const errors = await validate(esclusa);

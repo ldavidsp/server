@@ -4,19 +4,19 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 export class Tolva {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
 
     @Column()
-    modelo: string;
+    MODELO: string;
 
     @Column()
-    direccionmodbus: number;
+    DIRECCIONMODBUS: number;
 
     @Column()
-    idLinea: number;
+    IDLINEA: number;
 
     @Column()
-    idAlarma: number;
+    IDALARMA: number;
 
 
 }
@@ -25,18 +25,18 @@ export class Tolva {
 export class Historicotolva {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
 
     @Column()
-    observacion: string;
+    OBSERVACION: string;
 
     @Column()
-    fecha: Date;
+    FECHA: Date;
 
     @Column()
-    idTolva: number;
+    IDTOLVA: number;
 
     @Column()
-    usuario: number;
+    USUARIO: number;
 
 }

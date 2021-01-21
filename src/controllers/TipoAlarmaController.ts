@@ -35,7 +35,7 @@ export class AlimentacionController {
         let tipoalarma = new Alimentacion();
         
         //asign each param 
-        tipoalarma.idJaula = idJaula;
+        tipoalarma.IDJAULA = idJaula;
 
         //Validade if the parameters are ok
         const errors = await validate(tipoalarma);

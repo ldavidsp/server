@@ -35,7 +35,7 @@ export class SelectoraController {
         let selectora = new Selectora();
         
         //asign each param 
-        selectora.idLinea = idLinea;
+        selectora.ID = idLinea;
 
         //Validade if the parameters are ok
         const errors = await validate(selectora);

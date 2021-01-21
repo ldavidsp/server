@@ -4,37 +4,37 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 export class Sistema {
 
     @PrimaryGeneratedColumn()
-    idSistema: number;
+    IDSISTEMA: number;
 
     @Column()
-    centro: string;
+    CENTRO: string;
 
     @Column()
-    ponton: string;
+    PONTON: string;
 
     @Column()
-    macplc: string;
+    MACPLC: string;
 
     @Column()
-    estado: number;
+    ESTADO: number;
 
     @Column()
-    ipplc: string;
+    IPPLC: string;
 
     @Column()
-    tema: number;
+    TEMA: number;
 
     @Column()
-    clienteConectado: number;
+    CLIENTECONECTADO: number;
 
     @Column()
-    servidorConectado: number;
+    SERVIDORCONECTADO: number;
 
     @Column()
-    plcConectado: number;
+    PLCCONECTADO: number;
 
     @Column()
-    contadorReset: number;
+    CONTADORRESET: number;
 
 
 }

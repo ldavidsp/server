@@ -35,7 +35,7 @@ export class AlimentacionController {
         let alimentacion = new Alimentacion();
         
         //asign each param 
-		alimentacion.idJaula = idJaula;
+		alimentacion.IDJAULA = idJaula;
 
 		//Validade if the parameters are ok
 		const errors = await validate(alimentacion);

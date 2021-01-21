@@ -4,12 +4,12 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 export class Guillotina {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
 
     @Column()
-    modelo: string;
+    MODELO: string;
 
     @Column()
-    idSilo: number;
+    IDSILO: number;
 
 }

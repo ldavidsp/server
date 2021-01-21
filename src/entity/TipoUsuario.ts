@@ -4,9 +4,9 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 export class TipoUsuario {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
 
     @Column()
-    tipoUsuario: string;
+    TIPOUSUARIO: string;
 
 }

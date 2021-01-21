@@ -4,13 +4,13 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 export class TipoAlarma {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
 
     @Column()
-    tipoAlarma: string;
+    TIPOALARMA: string;
 
     @Column()
-    activo: number;
+    ACTIVO: number;
 
 
 }

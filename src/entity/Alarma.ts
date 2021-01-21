@@ -25,22 +25,22 @@ export class Alarma {
 export class Historicoalarma {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
 
     @Column()
-    idLinea: number;
+    IDLINEA: number;
     
     @Column()
-    fecha: Date;
+    FECHA: Date;
 
     @Column()
     observacion: string;
     
     @Column()
-    idAlarma: number;
+    IDALARMA: number;
     
     @Column()
-    usuario: number;
+    USUARIO: number;
 
 
 

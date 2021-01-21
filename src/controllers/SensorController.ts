@@ -35,7 +35,7 @@ export class SensorController {
         let sensor = new Sensor();
         
         //asign each param 
-        sensor.nombre = nombre;
+        sensor.NOMBRE = nombre;
 
         //Validade if the parameters are ok
         const errors = await validate(sensor);

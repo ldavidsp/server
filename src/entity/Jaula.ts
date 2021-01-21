@@ -1,61 +1,64 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
 import { Length } from "class-validator";
+import { Linea } from './Linea';
 
 @Entity()
 export class Jaula{
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
 
     @Column()
-  	nombre: string;
+  	NOMBRE: string;
 
     @Column()
-    pesoPromedio: number; 
+    PESOPROMEDIO: number; 
 
     @Column()
-    cantidadPeces: number; 
+    CANTIDADPECES: number; 
 
     @Column()
-    posicionSelectora: number; 
+    POSICIONSELECTORA: number; 
 
     @Column()
-    prioridad: number; 
+    PRIORIDAD: number; 
 
     @Column()
-    tasa: number; 
+    TASA: number; 
 
     @Column()
-    factorActividad: number; 
+    FACTORACTIVIDAD: number; 
 
     @Column()
-    tipoTasa: number; 
+    TIPOTASA: number; 
 
     @Column()
-    tiempoSoplado: number; 
+    TIEMPOSOPLADO: number; 
 
     @Column()
-    hzSoplador: number; 
+    HZSOPLADOR: number; 
 
     @Column()
-    habilitada: number; 
+    HABILITADA: number; 
 
     @Column()
-    idDocificador: number; 
+    IDDOCIFICADOR: number; 
 
     @Column()
-    idProgramacion: number; 
+    IDPROGRAMACION: number; 
 
     @Column()
-    idSelectora: number; 
+    IDSELECTORA: number; 
+
+    // @ManyToOne(type => Linea, linea => linea.jaula)
+    // idLinea: Linea; 
+    @Column()
+    IDLINEA: number; 
 
     @Column()
-    idLinea: number; 
+    TIEMPOESPERA: number; 
 
     @Column()
-    tiempoEspera: number; 
-
-    @Column()
-    monorracion: number; 
+    MONORRACION: number; 
 
 }

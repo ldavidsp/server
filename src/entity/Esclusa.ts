@@ -4,16 +4,16 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 export class Esclusa {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
 
     @Column()
-    modelo: string;
+    MODELO: string;
 
     @Column()
-    idLinea: number;
+    IDLINEA: number;
 
     @Column()
-    idAlarma: number;
+    IDALARMA: number;
 
 
 }

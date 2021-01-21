@@ -35,7 +35,7 @@ export class CalibracionController {
         let calibracion = new Calibracion();
         
         //asign each param 
-        calibracion.idDosificador = idDosificador;
+        calibracion.IDDOSIFICADOR = idDosificador;
 
         //Validade if the parameters are ok
         const errors = await validate(calibracion);

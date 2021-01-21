@@ -1,4 +1,5 @@
-import {Column,  PrimaryGeneratedColumn, Entity} from "typeorm";
+import {Column,  PrimaryGeneratedColumn, Entity, OneToMany} from "typeorm";
+import { Jaula } from './Jaula';
 
 @Entity()
 export class Linea {
@@ -6,26 +7,29 @@ export class Linea {
     @PrimaryGeneratedColumn()
     ID: number;
     @Column()
-    nombre: string;
+    NOMBRE: string;
     @Column()
-    estado: number;
+    ESTADO: number;
     @Column()
-    presion: number;
+    PRESION: number;
     @Column()
-    alarma: number;
+    ALARMA: number;
     @Column()
-    hzPausa: number;
+    HZPAUSA: number;
     @Column()
-    indiceJaula: number;
+    INDICEJAULA: number;
     @Column()
-    modo: number;
+    MODO: number;
     @Column()
-    posicionSelector: number;
+    POSICIONSELECTOR: number;
     @Column()
-    idProgramacion: number;
+    IDPROGRAMACION: number;
     @Column()
-    idAlarmaPresion: number;
+    IDALARMAPRESION: number;
     @Column()
-    finalizada: number;
+    FINALIZADA: number;
+
+    // @OneToMany(() => Jaula, jaula => jaula.idLinea)
+    // jaula: Jaula[];
 
 }

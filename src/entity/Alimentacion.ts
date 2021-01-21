@@ -4,43 +4,43 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 export class Alimentacion {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
 
     @Column()
-    visitaActual: number;
+    VISITAACTUAL: number;
 
     @Column()
-    totalVisitas: number;
+    TOTALVISITAS: number;
 
     @Column()
-    idJaula: number;
+    IDJAULA: number;
 
     @Column()
-    idLinea: number;
+    IDLINEA: number;
 
     @Column()
-    entregadoVisit: number;
+    ENTREGADOVISIT: number;
 
     @Column()
-    objetivoVisita: number;
+    OBJETIVOVISITA: number;
 
     @Column()
-    totalEntregado: number;
+    TOTALENTREGADO: number;
 
     @Column()
-    objetivoTotal: number;
+    OBJETIVOTOTAL: number;
 
     @Column()
-    hzDoser: number;
+    HZDOSER: number;
 
     @Column()
-    visitasCompletadas: number;
+    VISITASCOMPLETADAS: number;
 
     @Column()
-    estadoAlimentacions: string;
+    ESTADOALIMENTACIONS: string;
 
     @Column()
-    finalizada: number;
+    FINALIZADA: number;
 
 }
 
@@ -48,28 +48,28 @@ export class Alimentacion {
 export class Alimentacionhistorica {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
 
     @Column()
-    idJaula: number;
+    IDJAULA: number;
     
     @Column()
-    idDosificador: number;
+    IDDOSIFICADOR: number;
 
     @Column()
-    cantidadKg: number;
+    CANTIDADKG: number;
 
     @Column()
-    visita: number;
+    VISITA: number;
 
     @Column()
-    tasa: number;
+    TASA: number;
 
     @Column()
-    fecha: Date;
+    FECHA: Date;
 
     @Column()
-    usuario: number;
+    USUARIO: number;
 
 
 }

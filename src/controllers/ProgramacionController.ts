@@ -35,7 +35,7 @@ export class ProgramacionController {
         let programacion = new Programacion();
         
         //asign each param 
-        programacion.nombre = nombre;
+        programacion.NOMBRE = nombre;
 
         //Validade if the parameters are ok
         const errors = await validate(programacion);

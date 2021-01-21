@@ -35,7 +35,7 @@ export class SistemaController {
         let sistema = new Sistema();
         
         //asign each param 
-        sistema.centro = centro;
+        sistema.CENTRO = centro;
 
         //Validade if the parameters are ok
         const errors = await validate(sistema);

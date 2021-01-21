@@ -35,7 +35,7 @@ export class TipoUsuarioController {
         let tipoUsuario = new TipoUsuario();
         
         //asign each param 
-        tipoUsuario.tipoUsuario = idJaula;
+        tipoUsuario.TIPOUSUARIO = idJaula;
 
         //Validade if the parameters are ok
         const errors = await validate(tipoUsuario);

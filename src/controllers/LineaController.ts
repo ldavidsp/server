@@ -35,7 +35,7 @@ export class LineaController {
         let linea = new Linea();
         
         //asign each param 
-        linea.alarma = idJaula;
+        linea.ALARMA = idJaula;
 
         //Validade if the parameters are ok
         const errors = await validate(linea);

@@ -4,22 +4,22 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 export class Blower {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
 
     @Column()
-    modelo: string;
+    MODELO: string;
 
     @Column()
-    potencia: number;
+    POTENCIA: number;
 
     @Column()
-    direccionmodbus: number;
+    DIRECCIONMODBUS: number;
 
     @Column()
-    idLinea: number;
+    IDLINEA: number;
 
     @Column()
-    idAlarma: number;
+    IDALARMA: number;
 
 }
 
@@ -27,19 +27,19 @@ export class Blower {
 export class Historicoblower {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
 
     @Column()
-    observacion: string;
+    OBSERVACION: string;
 
     @Column()
-    fecha: Date;
+    FECHA: Date;
 
     @Column()
-    idblower: number;
+    IDBLOWER: number;
 
     @Column()
-    idAlarma: number;
+    IDALARMA: number;
 
 }
 
@@ -47,18 +47,18 @@ export class Historicoblower {
 export class Controlblower {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
     
     @Column()
-    idblower: number;    
+    IDBLOWER: number;    
     
     @Column()
-    idLinea: number;
+    IDLINEA: number;
 
     @Column()
-    hzblower: number;
+    HZBLOWER: number;
 
     @Column()
-    estadoblower: number;
+    ESTADOBLOWER: number;
 
 }

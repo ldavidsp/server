@@ -4,28 +4,28 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 export class Dosificador {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
 
     @Column()
-    prioridad: number;
+    PRIORIDAD: number;
 
     @Column()
-    modeloreductor: string;
+    MODELOREDUCTOR: string;
 
     @Column()
-    direccionmodbus: number;
+    DIRECCIONMODBUS: number;
 
     @Column()
-    tasamax: number;
+    TASAMAX: number;
 
     @Column()
-    idSilo: number;
+    IDSILO: number;
 
     @Column()
-    idLinea: number;
+    IDLINEA: number;
 
     @Column()
-    idAlarma: number;
+    IDALARMA: number;
 
 }
 
@@ -33,19 +33,19 @@ export class Dosificador {
 export class Historicodosificador {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
 
     @Column()
-    observacion: string;
+    OBSERVACION: string;
 
     @Column()
-    fecha: Date;
+    FECHA: Date;
 
     @Column()
-    idDosificador: number;
+    IDDOSIFICADOR: number;
 
     @Column()
-    usuario: number;
+    USUARIO: number;
 
 }
 

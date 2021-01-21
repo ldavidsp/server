@@ -4,25 +4,25 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 export class Calibracion {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
 
     @Column()
-    fecha: Date;
+    FECHA: Date;
 
     @Column()
-    idDosificador: number;
+    IDDOSIFICADOR: number;
 
     @Column()
-    usuario: number;
+    USUARIO: number;
 
     @Column()
-    grs1: number;
+    GRS1: number;
 
     @Column()
-    grs2: number;
+    GRS2: number;
 
     @Column()
-    grs3: number;
+    GRS3: number;
 
 
 }
@@ -31,72 +31,72 @@ export class Calibracion {
 export class Controlcalibraciom {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
     
     @Column()
-    idDosificador: number;    
+    IDDOSIFICADOR: number;    
     
     @Column()
-    idLinea: number;
+    IDLINEA: number;
 
     @Column()
-    prioridad: number;
+    PRIORIDAD: number;
 
     @Column()
-    calibrando: number;
+    CALIBRANDO: number;
 
     @Column()
-    hz1: number;
+    HZ1: number;
 
     @Column()
-    hz2: number;
+    HZ2: number;
 
     @Column()
-    hz3: number;
+    HZ3: number;
 
     @Column()
-    seg1: number;
+    SEG1: number;
 
     @Column()
-    seg2: number;
+    SEG2: number;
 
     @Column()
-    seg3: number;
+    SEG3: number;
 
     @Column()
-    grs1: number;
+    GRS1: number;
 
     @Column()
-    grs2: number;
+    GRS2: number;
 
     @Column()
-    grs3: number;
+    GRS3: number;
 
     @Column()
-    orden1: number;
+    ORDEN1: number;
 
     @Column()
-    orden2: number;
+    ORDEN2: number;
 
     @Column()
-    orden3: number;
+    ORDEN3: number;
 
     @Column()
-    ordencalibracion: number;
+    ORDENCALIBRACION: number;
 
     @Column()
-    tasamax: number;
+    TASAMAX: number;
 
     @Column()
-    activacionblower: number;
+    ACTIVACIONBLOWER: number;
 
     @Column()
-    hazblower: number;
+    HAZBLOWER: number;
 
     @Column()
-    posicionselector: number;
+    POSICIONSELECTOR: number;
 
     @Column()
-    moverselector: number;
+    MOVERSELECTOR: number;
 
 }

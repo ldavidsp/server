@@ -4,25 +4,25 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 export class Silo {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
 
     @Column()
-    nombre: string;
+    NOMBRE: string;
 
     @Column()
-    capacidad: number;
+    CAPACIDAD: number;
 
     @Column()
-    medicado: number;
+    MEDICADO: number;
 
     @Column()
-    saldo: number;
+    SALDO: number;
 
     @Column()
-    pelletkilo: number;
+    PELLETKILO: number;
 
     @Column()
-    alimento: string;
+    ALIMENTO: string;
 
 
 }

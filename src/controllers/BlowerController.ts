@@ -35,7 +35,7 @@ export class BlowerController {
         let blower = new Blower();
         
         //asign each param 
-        blower.idLinea = idLinea;
+        blower.IDALARMA = idLinea;
 
         //Validade if the parameters are ok
         const errors = await validate(blower);
