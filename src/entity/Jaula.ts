@@ -42,7 +42,7 @@ export class Jaula{
     HABILITADA: number; 
 
     @Column()
-    IDDOCIFICADOR: number; 
+    IDDOSIFICADOR: number; 
 
     @Column()
     IDPROGRAMACION: number; 
