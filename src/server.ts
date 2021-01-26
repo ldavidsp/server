@@ -4,13 +4,18 @@ import * as socketIo from 'socket.io';
 
 import { Message } from './model';
 import { GameController } from './controllers/GameController';
-import { Jaula } from './entity/Jaula';
-import { JaulaController } from './controllers/JaulaController';
+
+import * as socket from './sockets/sockets'
 
 export class SocketServer {
+
     public static readonly PORT:number = 3000;
-    private app: express.Application;
+
     private server: Server;
+
+    private app: express.Application;
+
+    //encargada de eventos de los sockets
     private io: SocketIO.Server;
     private socketID: any;
     private socketMessage: string;
@@ -28,13 +33,14 @@ export class SocketServer {
         this.app = express();
     }
 
+    private config(): void {
+        this.port = process.env.PORT || SocketServer.PORT;
+    }
+
     private createServer(): void {
         this.server = createServer(this.app);
     }
 
-    private config(): void {
-        this.port = process.env.PORT || SocketServer.PORT;
-    }
 
     private sockets(): void {
         this.io = socketIo(this.server);
@@ -49,6 +55,8 @@ export class SocketServer {
             this.socketID = socket.id
             let game = new GameController(socket, this.io);
             //let jaula = new JaulaController(socket, this.socketID)
+
+            this.io.emit('test', {msn: "from sockets"})
             
 
             console.log('Connected client on socket id %s.', socket.id);
