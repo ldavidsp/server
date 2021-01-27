@@ -7,27 +7,18 @@ import { SocketServer } from '../server';
 
 export class JaulaController {
 
-	// private io: SocketIO.Server;
-	// private socket;
-
-	// constructor(socket, io : SocketIO.Server){
-	// 	this.socket = socket
-	// 	this.io = io;
-	// }
-
-	
 	public jaulaRepository = getRepository(Jaula);
 
 	static all = async (req: Request, res: Response, next: NextFunction) => {
 		const jaulaRepository = getRepository(Jaula);
 		try {
 			const jaula = await jaulaRepository.find();
-			// jaula =  await  this.jaulaRepository.find({select: ["id","firstName"] }); // use incase you want to select specific values
 			res.send(jaula);
 
 		} catch (error) {
 			res.status(500).send();
 		}
+
 	}
 
 	static getOneById = async (req: Request, res: Response, next: NextFunction) => {
@@ -78,33 +69,27 @@ export class JaulaController {
 	static editJaula = async (req: Request, res: Response) => {
 		//Get the ID from the url
 		const id = req.params.id;
-
 		//Get values from the body
 		const { tasa } = req.body;
-
 		//Try to find jaula on database
 		const jaulaRepository = getRepository(Jaula);
 		let jaulaToUpdate;
 		try {
 			jaulaToUpdate = await jaulaRepository.findOneOrFail(id);
 			console.log(jaulaToUpdate);
-			
 		} catch (error) {
 			//If not found, send a 404 response
 			res.status(404).send("Jaula not found");
 			return;
 		}
-
 		//Validate the new values on model
-		jaulaToUpdate.TASA = tasa;
+		jaulaToUpdate.TASA = Number(tasa);
 		console.log(jaulaToUpdate);
-		
 		const errors = await validate(jaulaToUpdate);
 		if (errors.length > 0) {
 			res.status(400).send(errors);
 			return;
 		}
-
 		//Try to safe, if fails, that means jaulaname already in use
 		try {
 			await jaulaRepository.update(id, jaulaToUpdate);
@@ -113,8 +98,13 @@ export class JaulaController {
 			return;
 		}
 		//After all send a 204 (no content, but accepted) response
+
+		const server = SocketServer.instance;
+		const jaula = await jaulaRepository.find();
+		server.io.emit('test', { jaula });
+
 		res.status(204).send();
 
 	}
-	
+
 }

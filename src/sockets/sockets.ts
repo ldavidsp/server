@@ -12,6 +12,7 @@ export const conectarCliente = (cliente: Socket, io: socketIO.Server) =>{
 
 export const desconectar = (cliente: Socket, io: socketIO.Server) => {
     cliente.on('disconnect', () => {
+        console.log("Desconectado")
         // usuarioConectados.borrarUsuario(cliente.id)   
         
         // io.emit('usuarios-activos', usuarioConectados.getLista());
@@ -55,3 +56,5 @@ export const desconectar = (cliente: Socket, io: socketIO.Server) => {
 //     })
 
 // }
+
+
