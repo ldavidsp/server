@@ -7,6 +7,16 @@ export class AlimentacionController {
 
 	public alimentacionRepository = getRepository(Alimentacion);
 
+	public async getAlimentaciones(): Promise<Alimentacion[]>{
+        const alimentacionRepository = getRepository(Alimentacion);
+        try {
+            const alimentaciones = await alimentacionRepository.find();
+            return alimentaciones;            
+        } catch (error) {
+            return [];
+        }
+    }
+
 	static all = async (req: Request, res: Response, next: NextFunction) => {
 		const alimentacionRepository = getRepository(Alimentacion);
 		try {

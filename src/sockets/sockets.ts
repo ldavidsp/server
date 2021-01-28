@@ -1,11 +1,34 @@
 import { Socket } from 'socket.io';
 import socketIO from 'socket.io';
+import { LineaController } from "../controllers/LineaController";
+import { JaulaController } from "../controllers/JaulaController";
+import { AlimentacionController } from '../controllers/AlimentacionController';
 
 // export const usuarioConectados = new UsuariosLista();
+
+//export const lineaController = new LineaController();
 
 export const conectarCliente = (cliente: Socket, io: socketIO.Server) =>{
     // const usuario = new Usuario(cliente.id)
     // usuarioConectados.agregar(usuario)
+
+    const lineaController = new LineaController();  
+    const jaulaController = new JaulaController();  
+    const alimentacionController = new AlimentacionController();  
+
+    setInterval(function(){
+        lineaController.getLineas().then(lineas => {
+            io.emit('all-lineas', lineas);            
+        });
+        jaulaController.getJaulas().then(jaulas => {
+            io.emit('all-jaulas', jaulas);            
+        });
+        alimentacionController.getAlimentaciones().then(alimentaciones => {
+            io.emit('all-alimentaciones', alimentaciones);            
+        });
+
+        
+    }, 2500);
     
 
 }

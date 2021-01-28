@@ -7,6 +7,16 @@ export class LineaController {
 
     public lineaRepository = getRepository(Linea);
 
+    public async getLineas(): Promise<Linea[]>{
+        const lineaRepository = getRepository(Linea);
+        try {
+            const lineas = await lineaRepository.find();
+            return lineas;            
+        } catch (error) {
+            return [];
+        }
+    }
+
     static all = async (req: Request, res: Response, next: NextFunction) => {
         const lineaRepository = getRepository(Linea);
         try {

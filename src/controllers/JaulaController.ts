@@ -9,6 +9,16 @@ export class JaulaController {
 
 	public jaulaRepository = getRepository(Jaula);
 
+	public async getJaulas(): Promise<Jaula[]>{
+        const jaulaRepository = getRepository(Jaula);
+        try {
+            const jaulas = await jaulaRepository.find();
+            return jaulas;            
+        } catch (error) {
+            return [];
+        }
+    }
+
 	static all = async (req: Request, res: Response, next: NextFunction) => {
 		const jaulaRepository = getRepository(Jaula);
 		try {

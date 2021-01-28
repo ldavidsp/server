@@ -1,4 +1,4 @@
-import { createServer, Server } from 'http';
+
 import express from 'express';
 import http from 'http'
 import socketIO from 'socket.io'
@@ -54,6 +54,7 @@ export class SocketServer {
 
             console.log('Connected client on socket id %s.', cliente.id);
 
+            socket.conectarCliente(cliente, this.io);
             socket.desconectar(cliente, this.io);
 
             
