@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Length } from 'class-validator';
 
 @Entity()
 export class Selectora {
@@ -9,7 +10,7 @@ export class Selectora {
     @Column()
     SALIDAS: number;
 
-    @Column()
+    @Column("varchar", { length: 150 })
     MODELO: string;
     
     @Column()
@@ -29,7 +30,7 @@ export class Historicoselectora {
     @PrimaryGeneratedColumn()
     ID: number;
 
-    @Column()
+    @Column("varchar", { length: 150 })
     OBSERVACION: string;
 
     @Column()

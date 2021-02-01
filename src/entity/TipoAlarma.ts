@@ -6,7 +6,7 @@ export class TipoAlarma {
     @PrimaryGeneratedColumn()
     ID: number;
 
-    @Column()
+    @Column("varchar", { length: 150 })
     TIPOALARMA: string;
 
     @Column()

@@ -4,19 +4,19 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 export class Alarma {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    ID: number;
 
     @Column()
-    direccionmodbus: number;
+    DIRECCIONMODBUS: number;
 
     @Column()
-    idTipoAlarma: number;
+    IDTIPOALARMA: number;
 
     @Column()
-    estado: number;
+    ESTADO: number;
 
     @Column()
-    idLinea: number;
+    IDLINEA: number;
 
 
 }
@@ -33,8 +33,8 @@ export class Historicoalarma {
     @Column()
     FECHA: Date;
 
-    @Column()
-    observacion: string;
+    @Column("varchar", { length: 150 })
+    OBSERVACION: string;
     
     @Column()
     IDALARMA: number;

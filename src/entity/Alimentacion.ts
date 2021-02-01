@@ -19,7 +19,7 @@ export class Alimentacion {
     IDLINEA: number;
 
     @Column()
-    ENTREGADOVISIT: number;
+    ENTREGADOVISITA: number;
 
     @Column()
     OBJETIVOVISITA: number;
@@ -36,8 +36,8 @@ export class Alimentacion {
     @Column()
     VISITASCOMPLETADAS: number;
 
-    @Column()
-    ESTADOALIMENTACIONS: string;
+    @Column("varchar", { length: 150 })
+    ESTADOALIMENTACION: string;
 
     @Column()
     FINALIZADA: number;

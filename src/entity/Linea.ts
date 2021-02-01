@@ -1,13 +1,15 @@
-import {Column,  PrimaryGeneratedColumn, Entity, OneToMany} from "typeorm";
+import { Column, PrimaryGeneratedColumn, Entity, OneToMany } from "typeorm";
 import { Jaula } from './Jaula';
 
 @Entity()
 export class Linea {
-    
+
     @PrimaryGeneratedColumn()
     ID: number;
-    @Column()
+
+    @Column("varchar", { length: 150 })
     NOMBRE: string;
+    
     @Column()
     ESTADO: number;
     @Column()

@@ -5,6 +5,17 @@ import { Alarma } from '../entity/Alarma';
 export class AlarmaController {
 	public alarmaRepository = getRepository(Alarma);
 
+	public async getAlarmas(): Promise<Alarma[]>{
+        const alarmaRepository = getRepository(Alarma);
+        try {
+            const alarmas = await alarmaRepository.find();
+            return alarmas;            
+        } catch (error) {
+            return [];
+        }
+    }
+
+
 	static all = async (req: Request, res: Response, next: NextFunction) => {
 		const alarmaRepository = getRepository(Alarma);
 		try {

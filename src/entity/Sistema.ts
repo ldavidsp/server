@@ -6,19 +6,19 @@ export class Sistema {
     @PrimaryGeneratedColumn()
     IDSISTEMA: number;
 
-    @Column()
+    @Column("varchar", { length: 150 })
     CENTRO: string;
 
-    @Column()
+    @Column("varchar", { length: 150 })
     PONTON: string;
 
-    @Column()
+    @Column("varchar", { length: 150 })
     MACPLC: string;
 
     @Column()
     ESTADO: number;
 
-    @Column()
+    @Column("varchar", { length: 150 })
     IPPLC: string;
 
     @Column()

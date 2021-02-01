@@ -6,7 +6,7 @@ export class TipoUsuario {
     @PrimaryGeneratedColumn()
     ID: number;
 
-    @Column()
+    @Column("varchar", { length: 150 })
     TIPOUSUARIO: string;
 
 }

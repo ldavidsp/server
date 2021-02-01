@@ -8,7 +8,7 @@ export class Jaula{
     @PrimaryGeneratedColumn()
     ID: number;
 
-    @Column()
+    @Column("varchar", { length: 150 })
   	NOMBRE: string;
 
     @Column()

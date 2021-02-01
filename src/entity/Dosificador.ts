@@ -9,7 +9,7 @@ export class Dosificador {
     @Column()
     PRIORIDAD: number;
 
-    @Column()
+    @Column("varchar", { length: 150 })
     MODELOREDUCTOR: string;
 
     @Column()
@@ -35,7 +35,7 @@ export class Historicodosificador {
     @PrimaryGeneratedColumn()
     ID: number;
 
-    @Column()
+    @Column("varchar", { length: 150 })
     OBSERVACION: string;
 
     @Column()

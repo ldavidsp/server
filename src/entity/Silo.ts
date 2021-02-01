@@ -6,7 +6,7 @@ export class Silo {
     @PrimaryGeneratedColumn()
     ID: number;
 
-    @Column()
+    @Column("varchar", { length: 150 })
     NOMBRE: string;
 
     @Column()
@@ -21,8 +21,44 @@ export class Silo {
     @Column()
     PELLETKILO: number;
 
-    @Column()
+    @Column("varchar", { length: 150 })
     ALIMENTO: string;
+
+
+}
+
+@Entity()
+export class Silohistorico {
+
+    @PrimaryGeneratedColumn()
+    ID: number;
+    
+    @Column()
+    SALDOANTERIOR: number;
+
+    @Column()
+    MOVIMIENTO: number;
+
+    @Column()
+    SALDOACTUAL: number;
+    
+    @Column("varchar", { length: 150 })
+    OBSERVACION: string;
+
+    @Column()
+    FECHA: Date;
+
+    @Column()
+    IDSILO: number;
+
+    @Column()
+    IDUSUARIO: number;
+
+
+
+
+
+
 
 
 }

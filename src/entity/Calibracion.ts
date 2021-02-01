@@ -28,7 +28,7 @@ export class Calibracion {
 }
 
 @Entity()
-export class Controlcalibraciom {
+export class Controlcalibracion {
 
     @PrimaryGeneratedColumn()
     ID: number;

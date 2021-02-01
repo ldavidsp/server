@@ -6,7 +6,7 @@ export class Programacion {
     @PrimaryGeneratedColumn()
     ID: number;
 
-    @Column()
+    @Column("varchar", { length: 150 })
     NOMBRE: string;
 
     @Column()

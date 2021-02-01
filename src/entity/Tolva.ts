@@ -6,7 +6,7 @@ export class Tolva {
     @PrimaryGeneratedColumn()
     ID: number;
 
-    @Column()
+    @Column("varchar", { length: 150 })
     MODELO: string;
 
     @Column()
@@ -27,7 +27,7 @@ export class Historicotolva {
     @PrimaryGeneratedColumn()
     ID: number;
 
-    @Column()
+    @Column("varchar", { length: 150 })
     OBSERVACION: string;
 
     @Column()

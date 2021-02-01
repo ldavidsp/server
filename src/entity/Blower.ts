@@ -6,7 +6,7 @@ export class Blower {
     @PrimaryGeneratedColumn()
     ID: number;
 
-    @Column()
+    @Column("varchar", { length: 150 })
     MODELO: string;
 
     @Column()
@@ -29,7 +29,7 @@ export class Historicoblower {
     @PrimaryGeneratedColumn()
     ID: number;
 
-    @Column()
+    @Column("varchar", { length: 150 })
     OBSERVACION: string;
 
     @Column()

@@ -3,6 +3,7 @@ import socketIO from 'socket.io';
 import { LineaController } from "../controllers/LineaController";
 import { JaulaController } from "../controllers/JaulaController";
 import { AlimentacionController } from '../controllers/AlimentacionController';
+import { AlarmaController } from '../controllers/AlarmaController';
 
 // export const usuarioConectados = new UsuariosLista();
 
@@ -15,6 +16,7 @@ export const conectarCliente = (cliente: Socket, io: socketIO.Server) =>{
     const lineaController = new LineaController();  
     const jaulaController = new JaulaController();  
     const alimentacionController = new AlimentacionController();  
+    const alarmaController = new AlarmaController();  
 
     setInterval(function(){
         lineaController.getLineas().then(lineas => {
@@ -25,6 +27,9 @@ export const conectarCliente = (cliente: Socket, io: socketIO.Server) =>{
         });
         alimentacionController.getAlimentaciones().then(alimentaciones => {
             io.emit('all-alimentaciones', alimentaciones);            
+        });
+        alarmaController.getAlarmas().then(alarmas => {
+            io.emit('all-alarmas', alarmas);            
         });
 
         

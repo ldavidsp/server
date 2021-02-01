@@ -6,7 +6,7 @@ export class Esclusa {
     @PrimaryGeneratedColumn()
     ID: number;
 
-    @Column()
+    @Column("varchar", { length: 150 })
     MODELO: string;
 
     @Column()
@@ -15,5 +15,25 @@ export class Esclusa {
     @Column()
     IDALARMA: number;
 
+}
+
+@Entity()
+export class Historicoesclusa {
+
+    @PrimaryGeneratedColumn()
+    ID: number;
+
+    @Column("varchar", { length: 150 })
+    OBSERVACION: string;
+
+    @Column()
+    FECHA: Date;
+
+    @Column()
+    IDESCLUSA: number;
+
+    @Column()
+    USUARIO: number;
 
 }
+
