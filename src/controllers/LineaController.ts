@@ -80,42 +80,39 @@ export class LineaController {
     }
 
 
-    static editLinea = async (req: Request, res: Response) => {
-        //Get the ID from the url
-        const id = req.params.id;
+	static editLinea = async (req: Request, res: Response) => {
+		//Get the ID from the url
+		const id = req.params.id;
+		//Get values from the body
+		const { estado } = req.body;
+		//Try to find jaula on database
+		const lineaRepository = getRepository(Linea);
+		let lineaToUpdate;
+		try {
+			lineaToUpdate = await lineaRepository.findOneOrFail(id);
+			console.log(lineaToUpdate);
+		} catch (error) {
+			//If not found, send a 404 response
+			res.status(404).send("Linea not found");
+			return;
+		}
+		//Validate the new values on model
+		lineaToUpdate.ESTADO = Number(estado);
+		const errors = await validate(lineaToUpdate);
+		if (errors.length > 0) {
+			res.status(400).send(errors);
+			return;
+		}
+		//Try to safe, if fails, that means jaulaname already in use
+		try {
+			await lineaRepository.update(id, lineaToUpdate);
+		} catch (e) {
+			res.status(409).send(e);
+			return;
+		}
+		//After all send a 204 (no content, but accepted) responselineaToUpdate
 
-        //Get values from the body
-        const { lineaname, age } = req.body;
+		res.status(204).send();
 
-        //Try to find linea on database
-        const lineaRepository = getRepository(Linea);
-        let linea;
-        try {
-            linea = await lineaRepository.findOneOrFail(id);
-        } catch (error) {
-            //If not found, send a 404 response
-            res.status(404).send("Linea not found");
-            return;
-        }
-
-        //Validate the new values on model
-        linea.lineaname = lineaname;
-        linea.age = age;
-        const errors = await validate(linea);
-        if (errors.length > 0) {
-            res.status(400).send(errors);
-            return;
-        }
-
-        //Try to safe, if fails, that means lineaname already in use
-        try {
-            await lineaRepository.save(linea);
-        } catch (e) {
-            res.status(409).send("lineaname already in use");
-            return;
-        }
-        //After all send a 204 (no content, but accepted) response
-        res.status(204).send();
-
-    }
+	}
 }

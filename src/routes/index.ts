@@ -10,6 +10,7 @@ import jaula from "./jaula";
 import alimentacion from "./alimentacion";
 import dosificador from "./dosificador";
 import silo from "./silo";
+import tipoalarma from "./tipoalarma";
 
 const routes = Router();
 
@@ -23,5 +24,6 @@ routes.use("/jaula", jaula);
 routes.use("/alimentacion", alimentacion);
 routes.use("/dosificador", dosificador);
 routes.use("/silo", silo);
+routes.use("/tipoalarma", tipoalarma);
 
 export default routes;

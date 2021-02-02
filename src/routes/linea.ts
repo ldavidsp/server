@@ -16,4 +16,11 @@
     LineaController.getOneById
   );
 
+    //Edit one linea
+    router.patch(
+      "/:id([0-9]+)",
+      // [checkJwt],
+      LineaController.editLinea
+    );
+
   export default router;

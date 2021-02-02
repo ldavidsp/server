@@ -1,14 +1,14 @@
 import { getRepository } from "typeorm";
 import { NextFunction, Request, Response } from "express";
-import { TipoUsuario } from "../entity/TipoUsuario";
+import { Tipousuario } from "../entity/TipoUsuario";
 import { validate } from "class-validator";
 
 export class TipoUsuarioController {
 
-    public tipoUsuarioRepository = getRepository(TipoUsuario);
+    public tipoUsuarioRepository = getRepository(Tipousuario);
 
     static all = async (req: Request, res: Response, next: NextFunction) => {
-        const tipoUsuarioRepository = getRepository(TipoUsuario);
+        const tipoUsuarioRepository = getRepository(Tipousuario);
         try {
             const tipoUsuario = await tipoUsuarioRepository.find();
             res.send(tipoUsuario);
@@ -18,7 +18,7 @@ export class TipoUsuarioController {
     }
 
     static getOneById = async (req: Request, res: Response, next: NextFunction) => {
-        const tipoUsuarioRepository = getRepository(TipoUsuario);
+        const tipoUsuarioRepository = getRepository(Tipousuario);
         try {
             const tipoUsuario = await tipoUsuarioRepository.findOneOrFail(req.params.id);
             return tipoUsuario ? res.send(tipoUsuario) : res.status(404).send();
@@ -29,10 +29,10 @@ export class TipoUsuarioController {
     }
 
     static saveTipoUsuario = async (req: Request, res: Response, next: NextFunction) => {
-        const tipoUsuarioRepository = getRepository(TipoUsuario);
+        const tipoUsuarioRepository = getRepository(Tipousuario);
         //add params to save
         let { idJaula, } = req.body;
-        let tipoUsuario = new TipoUsuario();
+        let tipoUsuario = new Tipousuario();
         
         //asign each param 
         tipoUsuario.TIPOUSUARIO = idJaula;
@@ -56,8 +56,8 @@ export class TipoUsuarioController {
     }
 
     static deleteTipoUsuario = async (req: Request, res: Response, next: NextFunction) => {
-        const tipoUsuarioRepository = getRepository(TipoUsuario);
-        let tipoUsuarioToRemove: TipoUsuario;
+        const tipoUsuarioRepository = getRepository(Tipousuario);
+        let tipoUsuarioToRemove: Tipousuario;
         try {
             tipoUsuarioToRemove = await tipoUsuarioRepository.findOneOrFail(req.params.id);
         } catch (error) {
@@ -78,7 +78,7 @@ export class TipoUsuarioController {
         const { tipoUsuarioname, age } = req.body;
 
         //Try to find tipoUsuario on database
-        const tipoUsuarioRepository = getRepository(TipoUsuario);
+        const tipoUsuarioRepository = getRepository(Tipousuario);
         let tipoUsuario;
         try {
             tipoUsuario = await tipoUsuarioRepository.findOneOrFail(id);
