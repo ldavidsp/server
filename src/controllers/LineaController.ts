@@ -114,5 +114,41 @@ export class LineaController {
 
 		res.status(204).send();
 
+    }
+    
+    static updateHzPausa = async (req: Request, res: Response) => {
+		//Get the ID from the url
+		const id = req.params.id;
+		//Get values from the body
+		const { hzPausa } = req.body;
+		//Try to find jaula on database
+		const lineaRepository = getRepository(Linea);
+		let lineaToUpdate: Linea;
+		try {
+			lineaToUpdate = await lineaRepository.findOneOrFail(id);
+			console.log(lineaToUpdate);
+		} catch (error) {
+			//If not found, send a 404 response
+			res.status(404).send("Linea not found");
+			return;
+		}
+		//Validate the new values on model
+		lineaToUpdate.HZPAUSA = Number(hzPausa);
+		const errors = await validate(lineaToUpdate);
+		if (errors.length > 0) {
+			res.status(400).send(errors);
+			return;
+		}
+		//Try to safe, if fails, that means jaulaname already in use
+		try {
+			await lineaRepository.update(id, lineaToUpdate);
+		} catch (e) {
+			res.status(409).send(e);
+			return;
+		}
+		//After all send a 204 (no content, but accepted) responselineaToUpdate
+
+		res.status(204).send();
+
 	}
 }

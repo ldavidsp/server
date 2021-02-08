@@ -33,7 +33,7 @@ export const conectarCliente = (cliente: Socket, io: socketIO.Server) =>{
         });
 
         
-    }, 2500);
+    }, 1500);
     
 
 }

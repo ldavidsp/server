@@ -117,4 +117,44 @@ export class JaulaController {
 
 	}
 
+	static updateHabilitada = async (req: Request, res: Response) => {
+		//Get the ID from the url
+		const id = req.params.id;
+		//Get values from the body
+		const { habilitada } = req.body;
+		//Try to find jaula on database
+		const jaulaRepository = getRepository(Jaula);
+		let jaulaToUpdate;
+		try {
+			jaulaToUpdate = await jaulaRepository.findOneOrFail(id);
+		} catch (error) {
+			//If not found, send a 404 response
+			res.status(404).send("Jaula not found");
+			return;
+		}
+		//Validate the new values on model
+		jaulaToUpdate.HABILITADA = Number(habilitada);
+		console.log(jaulaToUpdate);
+		const errors = await validate(jaulaToUpdate);
+		if (errors.length > 0) {
+			res.status(400).send(errors);
+			return;
+		}
+		//Try to safe, if fails, that means jaulaname already in use
+		try {
+			await jaulaRepository.update(id, jaulaToUpdate);
+		} catch (e) {
+			res.status(409).send(e);
+			return;
+		}
+		//After all send a 204 (no content, but accepted) response
+
+		const server = SocketServer.instance;
+		const jaula = await jaulaRepository.find();
+		server.io.emit('test', { jaula });
+
+		res.status(204).send();
+
+	}
+
 }
