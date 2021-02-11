@@ -11,6 +11,7 @@ import alimentacion from "./alimentacion";
 import dosificador from "./dosificador";
 import silo from "./silo";
 import tipoalarma from "./tipoalarma";
+import selectora from "./selectora";
 
 const routes = Router();
 
@@ -25,5 +26,6 @@ routes.use("/alimentacion", alimentacion);
 routes.use("/dosificador", dosificador);
 routes.use("/silo", silo);
 routes.use("/tipoalarma", tipoalarma);
+routes.use("/selectora", selectora);
 
 export default routes;
