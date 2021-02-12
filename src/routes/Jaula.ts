@@ -30,4 +30,11 @@ router.patch(
   JaulaController.updateHabilitada
 );
 
+router.patch(
+  "/parametros/:id([0-9]+)",
+  // [checkJwt],
+  JaulaController.updateParametros
+);
+
+
 export default router;

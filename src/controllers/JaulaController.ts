@@ -157,4 +157,52 @@ export class JaulaController {
 
 	}
 
+	static updateParametros = async (req: Request, res: Response) => {
+		//Get the ID from the url
+		const id = req.params.id;
+		//Get values from the body
+		const { parametros } = req.body;
+
+		console.log(parametros);
+		
+		//Try to find jaula on database
+		const jaulaRepository = getRepository(Jaula);
+		let jaulaToUpdate: Jaula;
+		try {
+			jaulaToUpdate = await jaulaRepository.findOneOrFail(id);
+		} catch (error) {
+			//If not found, send a 404 response
+			res.status(404).send("Jaula not found");
+			return;
+		}
+		//Validate the new values on model
+		jaulaToUpdate.MONORRACION = Number(parametros.monorracion);
+		jaulaToUpdate.POSICIONSELECTORA = Number(parametros.posicionSelectora);
+		jaulaToUpdate.TIEMPOSOPLADO = Number(parametros.tiempoSoplado);
+		jaulaToUpdate.TIEMPOESPERA = Number(parametros.tiempoEspera);
+		jaulaToUpdate.HZSOPLADOR = Number(parametros.hzSoplador);
+		jaulaToUpdate.TASA = Number(parametros.tasa);
+		jaulaToUpdate.FACTORACTIVIDAD = Number(parametros.factorActividad);
+		jaulaToUpdate.IDDOSIFICADOR = Number(parametros.iddosificador);
+		console.log(jaulaToUpdate);
+		const errors = await validate(jaulaToUpdate);
+		if (errors.length > 0) {
+			res.status(400).send(errors);
+			return;
+		}
+		//Try to safe, if fails, that means jaulaname already in use
+		// try {
+		// 	await jaulaRepository.update(id, jaulaToUpdate);
+		// } catch (e) {
+		// 	res.status(409).send(e);
+		// 	return;
+		// }
+		//After all send a 204 (no content, but accepted) response
+
+
+
+		res.status(204).send();
+
+	}
+
 }
