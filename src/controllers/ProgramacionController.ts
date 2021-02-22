@@ -69,7 +69,6 @@ export class ProgramacionController {
         // return status ? status : res.json({message:"error occured, not found"})
     }
 
-
     static editProgramacion = async (req: Request, res: Response) => {
         //Get the ID from the url
         const id = req.params.id;

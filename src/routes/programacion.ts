@@ -16,4 +16,6 @@
     ProgramacionController.getOneById
   );
 
+  router.delete("/:id([0-9]+)", ProgramacionController.deleteProgramacion )
+
   export default router;

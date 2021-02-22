@@ -191,12 +191,12 @@ export class JaulaController {
 			return;
 		}
 		//Try to safe, if fails, that means jaulaname already in use
-		// try {
-		// 	await jaulaRepository.update(id, jaulaToUpdate);
-		// } catch (e) {
-		// 	res.status(409).send(e);
-		// 	return;
-		// }
+		try {
+			await jaulaRepository.update(id, jaulaToUpdate);
+		} catch (e) {
+			res.status(409).send(e);
+			return;
+		}
 		//After all send a 204 (no content, but accepted) response
 
 
