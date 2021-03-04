@@ -18,4 +18,8 @@
 
   router.delete("/:id([0-9]+)", ProgramacionController.deleteProgramacion )
 
+  router.post("/", ProgramacionController.saveProgramacion)
+
+  router.patch("/:id([0-9]+)", ProgramacionController.editProgramacion )
+
   export default router;

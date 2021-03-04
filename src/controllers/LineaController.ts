@@ -41,11 +41,12 @@ export class LineaController {
     static saveLinea = async (req: Request, res: Response, next: NextFunction) => {
         const lineaRepository = getRepository(Linea);
         //add params to save
-        let { idJaula, } = req.body;
+        let { nombre, idProgramacion } = req.body;
         let linea = new Linea();
         
         //asign each param 
-        linea.ALARMA = idJaula;
+        linea.NOMBRE = nombre;
+        linea.IDPROGRAMACION = idProgramacion;
 
         //Validade if the parameters are ok
         const errors = await validate(linea);
@@ -62,7 +63,7 @@ export class LineaController {
         }
 
         //If all ok, send 201 response
-        res.status(201).send("Linea created");
+        res.status(201).send({ msn: "linea created"});
     }
 
     static deleteLinea = async (req: Request, res: Response, next: NextFunction) => {
@@ -75,12 +76,51 @@ export class LineaController {
             return;
         }
         let stat = await lineaRepository.remove(lineaToRemove);
-        return stat ? res.send("Linea Deleted Successfully") : res.json({ message: "error occured" })
+        return stat ? res.send({msn: "Linea Deleted Successfully"}) : res.json({ message: "error occured" })
         // return status ? status : res.json({message:"error occured, not found"})
+    }  
+
+    static editLinea = async (req: Request, res: Response) => {
+        //Get the ID from the url
+        const id = req.params.id;
+
+        //Get values from the body
+        const { nombre, idProgramacion } = req.body;
+
+        //Try to find silo on database
+        const lineaRepo = getRepository(Linea);
+        let linea: Linea;
+        try {
+            linea = await lineaRepo.findOneOrFail(id);
+        } catch (error) {
+            //If not found, send a 404 response
+            res.status(404).send("Silo not found");
+            return;
+        }
+
+        //Validate the new values on model
+        linea.NOMBRE = nombre;
+        linea.IDPROGRAMACION = idProgramacion;
+
+        const errors = await validate(linea);
+        if (errors.length > 0) {
+            res.status(400).send(errors);
+            return;
+        }
+
+        //Try to safe, if fails, that means siloname already in use
+        try {
+            await lineaRepo.update(id, linea);
+        } catch (e) {
+            res.status(409).send({msn: "No se editó la linea"});
+            return;
+        }
+        //After all send a 204 (no content, but accepted) response
+        res.status(204).send();
+
     }
 
-
-	static editLinea = async (req: Request, res: Response) => {
+	static updateEstado = async (req: Request, res: Response) => {
 		//Get the ID from the url
 		const id = req.params.id;
 		//Get values from the body
@@ -150,5 +190,7 @@ export class LineaController {
 
 		res.status(204).send();
 
-	}
+    }
+    
+
 }

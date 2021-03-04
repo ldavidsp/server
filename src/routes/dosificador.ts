@@ -16,4 +16,10 @@
     DosificadorController.getOneById
   );
 
+  router.post("/", DosificadorController.saveDosificador)
+
+  router.delete("/:id([0-9]+)", DosificadorController.deleteDosificador )
+
+  router.patch("/:id([0-9]+)", DosificadorController.editDosificador )
+
   export default router;

@@ -1,6 +1,6 @@
 
 import { Router } from "express";
-import { LineaController } from "../controllers/LineaController";
+import { LineaController } from '../controllers/LineaController';
 import { checkJwt } from "../middlewares/checkJwt";
 
 const router = Router();
@@ -18,16 +18,26 @@ router.get(
 
 //Edit one linea
 router.patch(
+  "/estado/:id([0-9]+)",
+  // [checkJwt],
+  LineaController.updateEstado
+);
+router.patch(
   "/:id([0-9]+)",
   // [checkJwt],
   LineaController.editLinea
 );
 
-//Edit one linea
+//Edit HZPAUSA
 router.patch(
   "/hzpausa/:id([0-9]+)",
   // [checkJwt],
   LineaController.updateHzPausa
 );
+
+router.post("/", LineaController.saveLinea)
+
+router.delete("/:id([0-9]+)", LineaController.deleteLinea )
+
 
 export default router;

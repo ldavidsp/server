@@ -18,6 +18,13 @@ router.get(
 
 //Edit one jaula
 router.patch(
+  "/tasa/:id([0-9]+)",
+  // [checkJwt],
+  JaulaController.updateTasa
+);
+
+//Edit one jaula
+router.patch(
   "/:id([0-9]+)",
   // [checkJwt],
   JaulaController.editJaula
@@ -30,11 +37,16 @@ router.patch(
   JaulaController.updateHabilitada
 );
 
+//Edit parametros
 router.patch(
   "/parametros/:id([0-9]+)",
   // [checkJwt],
   JaulaController.updateParametros
 );
+
+router.post("/", JaulaController.saveJaula)
+
+router.delete("/:id([0-9]+)", JaulaController.deleteJaula )
 
 
 export default router;

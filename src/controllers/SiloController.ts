@@ -31,28 +31,34 @@ export class SiloController {
     static saveSilo = async (req: Request, res: Response, next: NextFunction) => {
         const siloRepository = getRepository(Silo);
         //add params to save
-        let { saldo, } = req.body;
-        let silo = new Silo();
-        
+        let { nombre, capacidad, medicado, saldo, pelletKilo, alimento } = req.body;
+        let newSilo = new Silo();
+          
+
         //asign each param 
-        silo.SALDO = saldo;
+        newSilo.NOMBRE = nombre;
+        newSilo.CAPACIDAD = capacidad;
+        newSilo.MEDICADO = medicado;
+        newSilo.SALDO = saldo;
+        newSilo.PELLETKILO = pelletKilo;
+        newSilo.ALIMENTO = alimento;
 
         //Validade if the parameters are ok
-        const errors = await validate(silo);
+        const errors = await validate(newSilo);
         if (errors.length > 0) {
             res.status(400).send(errors);
             return;
         }
 
         try {
-            await siloRepository.save(silo);
+            await siloRepository.save(newSilo);
         } catch (e) {
-            res.status(409).send("silo already existe");
+            res.status(409).send({ msn: "Silo ya existe"});
             return;
         }
 
         //If all ok, send 201 response
-        res.status(201).send("Silo created");
+        res.status(201).send({ msn: "Silo created"});
     }
 
     static deleteSilo = async (req: Request, res: Response, next: NextFunction) => {
@@ -65,7 +71,7 @@ export class SiloController {
             return;
         }
         let stat = await siloRepository.remove(siloToRemove);
-        return stat ? res.send("Silo Deleted Successfully") : res.json({ message: "error occured" })
+        return stat ? res.send({msn: "Silo Deleted Successfully"}) : res.json({ message: "error occured" })
         // return status ? status : res.json({message:"error occured, not found"})
     }
 
@@ -75,11 +81,11 @@ export class SiloController {
         const id = req.params.id;
 
         //Get values from the body
-        const { siloname, age } = req.body;
+        const { nombre, capacidad, medicado, saldo, pelletKilo, alimento } = req.body;
 
         //Try to find silo on database
         const siloRepository = getRepository(Silo);
-        let silo;
+        let silo : Silo;
         try {
             silo = await siloRepository.findOneOrFail(id);
         } catch (error) {
@@ -89,8 +95,13 @@ export class SiloController {
         }
 
         //Validate the new values on model
-        silo.siloname = siloname;
-        silo.age = age;
+        silo.NOMBRE = nombre;
+        silo.CAPACIDAD = capacidad;
+        silo.MEDICADO = medicado;
+        silo.SALDO = saldo;
+        silo.PELLETKILO = pelletKilo;
+        silo.ALIMENTO = alimento;
+
         const errors = await validate(silo);
         if (errors.length > 0) {
             res.status(400).send(errors);
@@ -99,9 +110,9 @@ export class SiloController {
 
         //Try to safe, if fails, that means siloname already in use
         try {
-            await siloRepository.save(silo);
+            await siloRepository.update(id, silo);
         } catch (e) {
-            res.status(409).send("siloname already in use");
+            res.status(409).send({msn: "No se editó el Silo"});
             return;
         }
         //After all send a 204 (no content, but accepted) response

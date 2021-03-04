@@ -31,11 +31,13 @@ export class DosificadorController {
     static saveDosificador = async (req: Request, res: Response, next: NextFunction) => {
         const dosificadorRepository = getRepository(Dosificador);
         //add params to save
-        let { idLinea, } = req.body;
+        let { tasaMax, idSilo, idLinea } = req.body;
         let dosificador = new Dosificador();
         
         //asign each param 
         dosificador.IDLINEA = idLinea;
+        dosificador.TASAMAX = tasaMax;
+        dosificador.IDSILO = idSilo;
 
         //Validade if the parameters are ok
         const errors = await validate(dosificador);
@@ -47,12 +49,12 @@ export class DosificadorController {
         try {
             await dosificadorRepository.save(dosificador);
         } catch (e) {
-            res.status(409).send("dosificador already existe");
+            res.status(409).send({ msn: "dosificador already existe"});
             return;
         }
 
         //If all ok, send 201 response
-        res.status(201).send("Dosificador created");
+        res.status(201).send({ msn: "Dosificador created"});
     }
 
     static deleteDosificador = async (req: Request, res: Response, next: NextFunction) => {
@@ -65,7 +67,7 @@ export class DosificadorController {
             return;
         }
         let stat = await dosificadorRepository.remove(dosificadorToRemove);
-        return stat ? res.send("Dosificador Deleted Successfully") : res.json({ message: "error occured" })
+        return stat ? res.send({msn: "Dosificador Deleted Successfully"}) : res.json({ message: "error occured" })
         // return status ? status : res.json({message:"error occured, not found"})
     }
 
@@ -75,11 +77,11 @@ export class DosificadorController {
         const id = req.params.id;
 
         //Get values from the body
-        const { dosificadorname, age } = req.body;
+        const { tasaMax, idSilo, idLinea } = req.body;
 
         //Try to find dosificador on database
         const dosificadorRepository = getRepository(Dosificador);
-        let dosificador;
+        let dosificador: Dosificador;
         try {
             dosificador = await dosificadorRepository.findOneOrFail(id);
         } catch (error) {
@@ -89,8 +91,10 @@ export class DosificadorController {
         }
 
         //Validate the new values on model
-        dosificador.dosificadorname = dosificadorname;
-        dosificador.age = age;
+        dosificador.IDLINEA = idLinea;
+        dosificador.TASAMAX = tasaMax;
+        dosificador.IDSILO = idSilo;
+
         const errors = await validate(dosificador);
         if (errors.length > 0) {
             res.status(400).send(errors);
@@ -101,7 +105,7 @@ export class DosificadorController {
         try {
             await dosificadorRepository.save(dosificador);
         } catch (e) {
-            res.status(409).send("dosificadorname already in use");
+            res.status(409).send({ msn: "dosificador no se editó"});
             return;
         }
         //After all send a 204 (no content, but accepted) response

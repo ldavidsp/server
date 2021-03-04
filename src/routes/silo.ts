@@ -16,4 +16,10 @@
     SiloController.getOneById
   );
 
+  router.post("/", SiloController.saveSilo)
+
+  router.delete("/:id([0-9]+)", SiloController.deleteSilo )
+
+  router.patch("/:id([0-9]+)", SiloController.editSilo )
+
   export default router;

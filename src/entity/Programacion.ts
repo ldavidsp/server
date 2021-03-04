@@ -16,6 +16,9 @@ export class Programacion {
     VISITAS: number;
 
     @Column()
+    KILOS: number;
+
+    @Column()
     USUARIO: number;
 
 
